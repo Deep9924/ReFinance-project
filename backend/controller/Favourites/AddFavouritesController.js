@@ -28,7 +28,6 @@ const addPassedFavouritesData = async (req, res) => {
 	const addData = new addFavourites(reqBody);
 	const result = await addData.addFavouritesData();
 	return res.json(result);
-	//return res.status(400).json("User is not admin to add new Home News to db");
 };
 
 module.exports = addPassedFavouritesData;

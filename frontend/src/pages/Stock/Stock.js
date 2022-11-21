@@ -16,12 +16,20 @@ const Stock = () => {
 	const [stockData, setStockData] = useState();
 	const [stockNews, setStockNews] = useState([]);
 	const [stockCandle, setStockCandle] = useState();
+	const [stockInfoData, setStockInfoData] = useState([]);
+
 	
 	useEffect(() => {
 		axios
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=stock`)
+			.then(res => {
+				setStockInfoData(res.data);
+			})
+			.catch(err => console.log(err))
+		axios
 			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=data`)
 			.then((res) => {
-				setStockData(res.data.data.result)
+				setStockData(res.data.data.result.metric)
 			})
 			.catch((err) => console.log(err));
 		axios.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=news`)
@@ -61,7 +69,6 @@ const Stock = () => {
 	const news = (stockNews && stockNews.map((values) => {
 		return (
 			<div key={values.title}>
-				{/* {console.log(values.image, values.title, values.description, values.link)} */}
 				<NewsComp image={values.image} title={values.headline} description={values.summary} link={values.url} uploaded_datetime={values.datetime} />
 			</div>
 		);
@@ -71,13 +78,13 @@ const Stock = () => {
 		<div className='main_test'>
 			<div className='mainweb'>
 				<div className='home_graph'>
-					<Graph symbol={symbol} stockData={stockData} stockCandle={stockCandle}/>
+					<Graph symbol={symbol} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData}/>
 				</div>
 				<div className='favourite'>
-					<Favourites />
+						<Favourites />
 				</div>
 				<div className='news'>
-					{!news ? (
+					{stockNews.length === 0 ? (
 						<Box>
 							<Typography component='h1' variant='h5' sx={{ mt: 6, mb: 2 }}>
 								No news found for this stock, but here is top news:

@@ -32,10 +32,6 @@ const addPassedHomeNewsData = async (req, res) => {
 	} catch {
 		return res.status(400).json("Not Added to Home News");
 	}
-	
-	/* if (await getUserRole(addData.user_email)) {
-		return res.json(result);
-	} */
 };
 
 module.exports = addPassedHomeNewsData;

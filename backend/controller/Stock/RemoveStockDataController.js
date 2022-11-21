@@ -1,6 +1,5 @@
 const { findStockToRemove, removeStockDataFromDB } = require("../../model/StockDataModel");
 const { getUserRole } = require("../../model/UserDataModel");
-//const axios = require("axios");
 
 class removeStock {
 	constructor(stockToRemove) {
@@ -27,7 +26,6 @@ class removeStock {
 const removeStockData = async (req, res) => {
 	const reqBody = req.body;
 	const removeData = new removeStock(reqBody);
-	//console.log(await removeData.removeStockData());
 	try {
 		await removeData.removeStockData();
 		return res.status(200).json({ status: "ok" });
@@ -37,21 +35,3 @@ const removeStockData = async (req, res) => {
 };
 
 module.exports = removeStockData;
-
-/* 
-{
-  "symbol": "AAPLs",
-  "currency": "USD",
-	"type": "COMMON STOCK",
-  "user_email": "ref@test.com"
-}
-*/
-
-/*    
-  this.currency = stockToAdd.currency;
-  this.description = stockToAdd.description;
-  this.mic = stockToAdd.mic;
-  this.type = stockToAdd.type; 
-  this.symbol = stockToAdd.symbol;
-  this.user_email = stockToAdd.userEmail; 
-*/

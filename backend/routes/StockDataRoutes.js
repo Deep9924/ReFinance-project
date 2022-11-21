@@ -7,7 +7,5 @@ const removeStockData = require("../controller/Stock/RemoveStockDataController")
 router.get("/", getStockData);
 router.post("/addstock", addStockData);
 router.post("/removestock", removeStockData);
-/* router.post("/", StockDataController);
-router.remove("/", StockDataController); */
 
 module.exports = router;

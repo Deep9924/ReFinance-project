@@ -26,7 +26,6 @@ const Search = ({ placeholder }) => {
     const addData = (toAdd) => {
         setfilteredData(toAdd);
         setfilteredDataSaved(toAdd);
-        //console.log(filteredData);
     };
 
     const clearBtn = () => {

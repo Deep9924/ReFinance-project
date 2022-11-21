@@ -6,13 +6,6 @@ import {
 import { useAuth } from '../../../firebase/AuthContext';
 import axios from "axios";
 
-/* 
-
-currency: stockToAdd.currency,
-      type: stockToAdd.type,
-      symbol:
-      */
-
 const RemoveStock = () => {
   const { currentUser } = useAuth();
 
@@ -66,8 +59,6 @@ const RemoveStock = () => {
         type
       })
       clearInput();
-      //.then((res) => setUserData(res.data)) // console.log(res.data)
-      //.catch((err) => console.log(err));
       setSuccess("Stock is Removed from the Database");
     }
     catch (error) {
@@ -141,7 +132,6 @@ const RemoveStock = () => {
             }}
           />
           <TextField
-            //noValidate
             margin="normal"
             required
             fullWidth

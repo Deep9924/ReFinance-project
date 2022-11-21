@@ -16,8 +16,6 @@ const getUserDatas = async (req, res) => {
 	const getData = new loginUser(reqBody);
 
 	return res.json(await getData.getUserData());
-	//return res.status(400).json("User is not admin to add new stock to the db");
-	//.status(200)
 };
 
 module.exports = getUserDatas;

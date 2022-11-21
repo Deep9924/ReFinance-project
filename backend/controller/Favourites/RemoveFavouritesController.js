@@ -29,7 +29,6 @@ const removePassedFavouritesData = async (req, res) => {
 	const result = await removeData.removeFavouritesData();
 
 	return res.json(result);
-	// return res.status(400).json("User is not admin to add new Home News to db");
 };
 
 module.exports = removePassedFavouritesData;

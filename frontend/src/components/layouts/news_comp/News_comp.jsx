@@ -6,7 +6,7 @@ import moment from 'moment'
 const NewsComp = (props) => {
 
   const { image, title, description, link, uploaded_datetime } = props;
-  const uploadedDate =  moment.unix(uploaded_datetime).format('LL') // uploaded_datetime
+  const uploadedDate =  moment.unix(uploaded_datetime).format('LL')
   /* '&:hover': { color: "#1a28a8", }, */
 
   return (
@@ -45,26 +45,3 @@ const NewsComp = (props) => {
 
 
 export default NewsComp;
-
-/* <a href={link} target="_blank" rel="noopener noreferrer">
-        <div className="news_card" >
-
-          <div className={image === "" ? '' : 'news_image'}>
-            <img src={image} alt="" />
-          </div>
-
-          <div className='news_text'>
-            <div className='title'>
-              <h3>
-                {title}
-              </h3>
-            </div>
-
-            <div className='description'>
-              <p>{description}</p>
-            </div>
-          </div>
-
-        </div>
-      </a>
-       */

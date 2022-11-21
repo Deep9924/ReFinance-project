@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
-//import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {
   Button, CssBaseline, TextField, Box, Typography, Container, Alert
 } from '@mui/material';
 import { useAuth } from '../../../firebase/AuthContext';
 import axios from "axios";
-
-/* 
-  currency: stockToAdd.currency,
-  description: stockToAdd.description,
-  mic: stockToAdd.mic,
-  type: stockToAdd.type,
-  symbol: stockToAdd.symbol,
-*/
 
 const AddStock = () => {
   const { currentUser } = useAuth();
@@ -87,8 +78,6 @@ const AddStock = () => {
         type
       })
       clearInput();
-      //.then((res) => setUserData(res.data)) // console.log(res.data)
-      //.catch((err) => console.log(err));
       setSuccess("Stock is added to the Database");
     }
     catch (error) {
@@ -140,7 +129,6 @@ const AddStock = () => {
                 }
               }
             }}
-          //autoFocus
           />
           <TextField
             required
@@ -165,7 +153,6 @@ const AddStock = () => {
             }}
           />
           <TextField
-            //noValidate
             margin="normal"
             required
             fullWidth
@@ -187,7 +174,6 @@ const AddStock = () => {
             }}
           />
           <TextField
-            //noValidate
             margin="normal"
             required
             fullWidth
@@ -209,7 +195,6 @@ const AddStock = () => {
             }}
           />
           <TextField
-            //noValidate
             margin="normal"
             required
             fullWidth

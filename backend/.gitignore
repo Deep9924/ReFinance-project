@@ -1,6 +1,2 @@
 /node_modules
 .env
-
-
-# https://jtway.co/deploying-subdirectory-projects-to-heroku-f31ed65f3f2
-# https://stackoverflow.com/questions/39197334/automated-heroku-deploy-from-subfolder

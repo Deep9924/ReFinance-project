@@ -6,10 +6,4 @@ const removeFavouritesData = require("../controller/Favourites/RemoveFavouritesC
 router.post("/addfav", addFavouritesData);
 router.post("/removefav", removeFavouritesData);
 
-
-/* 
-router.post("/addstock", addStockData);
-router.post("/", StockDataController);
-router.remove("/", StockDataController); */
-
 module.exports = router;

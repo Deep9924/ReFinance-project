@@ -1,8 +1,6 @@
 const { countStock, checkFieldExist, findData, updateData, findStockInfo } = require("../../model/StockDataModel");
 const axios = require("axios");
 
-// https://finnhub.io/api/v1/stock/metric?symbol=AAPL&metric=all&token=cc7sokqad3i03farbm4g
-
 class getStock {
 	constructor(stock_name, field_name) {
 		this.stock_name = stock_name;
@@ -30,17 +28,14 @@ class getStock {
 
 	searchData = async () => {
 		const res = await findData(this.stock_name, this.field_name);
-		return res; // res[candle]
-		//, { projection: {currency: 1, description: 1}}
-		//, projection: {candle:1}
+		return res; 
 	};
 
 	getNewCompanyData = async () => {
-		//const basic_financial = `https://finnhub.io/api/v1/stock/metric?symbol=${stock_name}&metric=all&token=${process.env.FINHUB_API_KEY}`;
 		const dataLink = `https://finnhub.io/api/v1/stock/metric?symbol=${this.stock_name}&metric=all&token=${process.env.FINHUB_API_KEY}`;
 		return await this.getDataApi(dataLink);
 	};
-// https://finnhub.io/api/v1/stock/metric?symbol=AAPL&metric=all&token=cc7sokqad3i03farbm4g
+
 	getNewNewsData = async () => {
 		const startDate = new Date(Date.now() - 604800).toISOString().slice(0, 10);
 		const endDate = new Date().toISOString().slice(0, 10);
@@ -49,9 +44,9 @@ class getStock {
 	};
 
 	getNewGraphData = async () => {
-		const startDate = Math.floor(Date.now() / 1000 - 432000);
+		const startDate = Math.floor(Date.now() / 1000 - 2678400); 
 		const endDate = Math.floor(Date.now() / 1000);
-		const dataLink = `https://finnhub.io/api/v1/stock/candle?symbol=${this.stock_name}&resolution=5&from=${startDate}&to=${endDate}&token=${process.env.FINHUB_API_KEY}`;
+		const dataLink = `https://finnhub.io/api/v1/stock/candle?symbol=${this.stock_name}&resolution=D&from=${startDate}&to=${endDate}&token=${process.env.FINHUB_API_KEY}`;
 		return await this.getDataApi(dataLink);
 	};
 
@@ -72,20 +67,16 @@ class getStock {
 				result = await this.getNewGraphData();
 				break;
 			case "stock":
-				result = await this.getStockInfo();
-				break;
+				return await this.getStockInfo();
 			default:
 				console.log("Error Occured getting new data, Try Again!");
 				break;
 		}
-		//console.log("Hello",await result.metric);
-		//console.log(result)
-		//!== {} && result !== "" && result !== null && result !== []
+
 		if (!result) {
 			return await this.searchData();
 		}
-
-		await updateData(this.stock_name, this.field_name, result.metric);
+		await updateData(this.stock_name, this.field_name, result);
 		return await this.searchData();
 	};
 

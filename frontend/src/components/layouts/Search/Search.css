@@ -27,24 +27,3 @@
 #clear-input-Btn{
     cursor: pointer;
 }
-
-/* @media screen and (max-width: 850px){
-    .search{
-        width:45vw;
-        margin: 0 auto;
-    }
-}
-
-
-@media screen and (max-width: 500px){
-    .search{
-        display: flex;
-        width:78vw;
-        margin:auto;
-    }
-
-    .search-input{
-        width: 100%;
-    }
- 
-} */

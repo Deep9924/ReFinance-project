@@ -1,6 +1,5 @@
 const { countStock, addStockDataToDB } = require("../../model/StockDataModel");
 const { getUserRole } = require("../../model/UserDataModel");
-//const axios = require("axios");
 
 class addStock {
 	constructor(stockToAdd) {
@@ -32,23 +31,3 @@ const addPassedStockData = async (req, res) => {
 };
 
 module.exports = addPassedStockData;
-
-/* 
-{
-  "symbol": "AAPLs",
-  "currency": "USD",
-	"description": "MY new Stock",
-	"mic": "XYSE",
-	"type": "COMMON STOCK",
-  "user_email": "ref@test.com"
-}
-*/
-
-/*    
-  this.currency = stockToAdd.currency;
-  this.description = stockToAdd.description;
-  this.mic = stockToAdd.mic;
-  this.type = stockToAdd.type; 
-  this.symbol = stockToAdd.symbol;
-  this.user_email = stockToAdd.userEmail; 
-*/

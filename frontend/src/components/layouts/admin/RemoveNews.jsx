@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {
   Button, CssBaseline, TextField, Box, Typography, Container, Alert
 } from '@mui/material';
@@ -50,8 +49,6 @@ const RemoveNews = () => {
       })
 
       clearInput()
-      //.then((res) => setUserData(res.data)) // console.log(res.data)
-      //.catch((err) => console.log(err));
       setSuccess("News is removed from the Database");
     }
     catch (error) {
@@ -100,10 +97,8 @@ const RemoveNews = () => {
                 }
               }
             }}
-          //autoFocus
           />
           <TextField
-            //noValidate
             margin="normal"
             required
             fullWidth

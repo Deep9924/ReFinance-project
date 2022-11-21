@@ -1,4 +1,3 @@
-// https://www.youtube.com/watch?v=YOAeBSCkArA
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -14,7 +13,6 @@ import axios from "axios";
 const regName = /^[a-zA-Z]+$/;
 const regEmail = /[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]{2,3}/;
 const regPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,}$/;
-//const defaultLink = "https://firebasestorage.googleapis.com/v0/b/refinance-552f5.appspot.com/o/images%2Fdefault_image.jpg?alt=media&token=25c27aef-0ef4-4996-9565-c953f8820d64"
 
 const SignUp = () => {
   const [firstname, setFirstname] = useState('');
@@ -35,8 +33,6 @@ const SignUp = () => {
   const [emailErrorCheck, setEmailErrorCheck] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [passwordErrorCheck, setPasswordErrorCheck] = useState(false);
-  /*   const [cpasswordError, setCPasswordError] = useState("");
-    const [cpasswordErrorCheck, setCPasswordErrorCheck] = useState(false); */
 
 
   const [loading, setLoading] = useState(false);
@@ -90,12 +86,7 @@ const SignUp = () => {
     if (password !== cpassword) {
       return setError("Passwords do not match");
     }
-    /* if (!cpassword) {
-      setCPasswordErrorCheck(true)
-      return setCPasswordError("Password is required, cannot be empty")
-    } */
-
-    if (!avatar) { //  === null
+    if (!avatar) {
       avatarLink = "https://firebasestorage.googleapis.com/v0/b/refinance-552f5.appspot.com/o/images%2Fdefault_image.jpg?alt=media&token=25c27aef-0ef4-4996-9565-c953f8820d64"
     }
     else {
@@ -115,8 +106,6 @@ const SignUp = () => {
         user_lastname: lastname,
         user_avatar: avatarLink,
       })
-
-        //.then((res) => setUserData(res.data)) // console.log(res.data)
         .catch((err) => console.log(err));
       navigate("/", { replace: true })
     }
@@ -147,7 +136,7 @@ const SignUp = () => {
         }}
       >
 
-        <Avatar sx={{ m: 1, bgcolor: '#3c8e4f' }}> {/* #11506e, #92f3a9 */}
+        <Avatar sx={{ m: 1, bgcolor: '#3c8e4f' }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -175,7 +164,6 @@ const SignUp = () => {
                     }
                   }
                 }}
-              //autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -201,7 +189,6 @@ const SignUp = () => {
             </Grid>
           </Grid>
           <TextField
-            //noValidate
             margin="normal"
             required
             fullWidth
@@ -277,7 +264,7 @@ const SignUp = () => {
               },
             }}>
             Upload Avatar Image
-            <input type="file" hidden accept="image/*" /> {/* id="avatar" name="avatar" onChange={(e) => setAvatar(e.target.files[0])} */}
+            <input type="file" hidden accept="image/*" />
           </Button>
           <Typography variant="body2">{avatar && "Image: " + avatar.name}</Typography>
           <Button
@@ -307,13 +294,3 @@ const SignUp = () => {
 }
 
 export default SignUp;
-
-/* 
-    const data = new FormData(e.currentTarget);
-    setFirstname(data.get('firstname'))
-    setLastname(data.get('lastname'))
-    setEmail(data.get('email'));
-    setPassword(data.get('password'))
-    setCPassword(data.get('cpassword'))
-    setAvatar(data.get('avatar'))
-*/

@@ -31,14 +31,6 @@ export function AuthProvider({ children }) {
 		return unsubscribe;
 	}, []);
 
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			setCurrentUser(user);
-			setLoading(false);
-		});
-		return unsubscribe;
-	}, []);
-
 	const value = {
 		currentUser,
 		signup,

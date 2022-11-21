@@ -1,7 +1,6 @@
 const db = require("./DBModel").collection("Refinance_News");
 
 const getHomeNews = async () => {
-	// .limit(10);
 	return await db.find().sort({ uploaded_datetime: -1 }).limit(15).toArray();
 };
 

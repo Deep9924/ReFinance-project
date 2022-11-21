@@ -5,14 +5,10 @@ const getUserRole = async (user_email) => {
 		return true;
 	}
 	return false;
-	// Can add first Name and last Name to be sure
-	// return await db.count({ email: userEmail, role: "admin"}) === 1 ? true : false;
 };
 
 const checkUserInDB = async (user_email) => {
 	return (await db.count({ email: user_email })) === 0;
-	// Can add first Name and last Name to be sure
-	// return await db.count({ email: userEmail, role: "admin"}) === 1 ? true : false;
 };
 
 const getUserDataFromDB = async (user_email) => {

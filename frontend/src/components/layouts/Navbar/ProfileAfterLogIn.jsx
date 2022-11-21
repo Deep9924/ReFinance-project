@@ -41,7 +41,7 @@ const ProfileAfterLogIn = () => {
     setError("")
     try {
       await logout()
-      navigate("/") //{replace: true}
+      navigate("/")
     } catch (e) {
       console.log(e)
       setError("Failed to log out");
@@ -54,7 +54,7 @@ const ProfileAfterLogIn = () => {
       <Box sx={{ flexGrow: 0 }}>
         <Tooltip title="Open menu">
           <IconButton onClick={handleOpenUserMenu} sx={{ ml: 3, mr: -1.5, p: 0 }}>
-            <Avatar alt={userData && userData.firstname} src={userData && userData.avatar} /> {/* "/static/images/avatar/2.jpg" */}
+            <Avatar alt={userData && userData.firstname} src={userData && userData.avatar} />
           </IconButton>
         </Tooltip>
         <Menu
@@ -71,7 +71,7 @@ const ProfileAfterLogIn = () => {
             horizontal: 'right',
           }}
           open={Boolean(anchorElUser)}
-          onClose={handleCloseUserMenu} //  component="h4" variant="h6" 
+          onClose={handleCloseUserMenu}
         >
           <Typography textAlign="left" sx={{ ml: 2, mr: 2, fontSize: 18, fontWeight: 600 }}>{userData && ("Hello, " + userData.firstname)}</Typography>
           {userData && userData.role === "admin" ?
@@ -95,17 +95,3 @@ const ProfileAfterLogIn = () => {
 }
 
 export default ProfileAfterLogIn;
-/* 
-  <MenuItem onClick={handleCloseUserMenu}>
-  <Typography textAlign="center"></Typography>
-  </MenuItem>
-  <MenuItem onClick={handleCloseUserMenu}>
-  <Typography textAlign="center">Remove Stock</Typography>
-  </MenuItem>
-  <MenuItem onClick={handleCloseUserMenu}>
-  <Typography textAlign="center">Add News</Typography>
-  </MenuItem>
-  <MenuItem onClick={handleCloseUserMenu}>
-  <Typography textAlign="center">Remove News</Typography>
-  </MenuItem>
-*/

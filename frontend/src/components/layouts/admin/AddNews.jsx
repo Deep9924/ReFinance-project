@@ -64,7 +64,7 @@ const AddNews = () => {
     }
 
     if (!image) { //  === null
-      imageLink = "https://firebasestorage.googleapis.com/v0/b/refinance-552f5.appspot.com/o/images%2Fdefault_image.jpg?alt=media&token=25c27aef-0ef4-4996-9565-c953f8820d64"
+      imageLink = "https://firebasestorage.googleapis.com/v0/b/refinance-552f5.appspot.com/o/homenews%2Fdefault_news.png?alt=media&token=d83803c9-3f7f-429a-bac1-190cbaddddfc"
     }
     else {
       const fileName = `homenews/${image.name + v4()}`
@@ -136,11 +136,9 @@ const AddNews = () => {
                 }
               }
             }}
-          //autoFocus
           />
 
           <TextField
-            //noValidate
             margin="normal"
             required
             fullWidth
@@ -199,7 +197,7 @@ const AddNews = () => {
               },
             }}>
             Upload News Image
-            <input type="file" hidden accept="image/*" /> {/* id="avatar" name="avatar" onChange={(e) => setAvatar(e.target.files[0])} */}
+            <input type="file" hidden accept="image/*" />
           </Button>
           <Typography variant="body2">{image && "Image: " + image.name}</Typography>
           <Button
@@ -222,13 +220,3 @@ const AddNews = () => {
 }
 
 export default AddNews;
-
-/* 
-    const data = new FormData(e.currentTarget);
-    setFirstname(data.get('firstname'))
-    setLastname(data.get('lastname'))
-    setEmail(data.get('email'));
-    setPassword(data.get('password'))
-    setCPassword(data.get('cpassword'))
-    setAvatar(data.get('avatar'))
-*/

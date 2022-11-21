@@ -9,11 +9,13 @@ import { useAuth } from '../../../firebase/AuthContext';
 import('./Graph.css');
 window.Chart = Chart
 
-const Graph = ({ symbol, stockData, stockCandle, stockInfoData }) => {
+const GraphFav = ({ symbol}) => {
   const [value, setValue] = useState(0);
   const [data, setData] = useState([]);
   const [timestamp, setTimestamp] = useState([]);
   const { currentUser } = useAuth()
+  const [stockData, setStockData] = useState();
+	const [stockInfoData, setStockInfoData] = useState();
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=candle`)
@@ -23,6 +25,18 @@ const Graph = ({ symbol, stockData, stockCandle, stockInfoData }) => {
       })
       .catch(err =>
         console.log(err))
+    axios
+    .get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=stock`)
+    .then(res => {
+      setStockInfoData(res.data);
+    })
+    .catch(err => console.log(err))
+    axios
+      .get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=data`)
+      .then((res) => {
+        setStockData(res.data.data.result.metric)
+        })
+      .catch((err) => console.log(err));
   }, [symbol]);
 
   const labels = timestamp.map(values => {
@@ -96,4 +110,4 @@ const Graph = ({ symbol, stockData, stockCandle, stockInfoData }) => {
   );
 }
 
-export default Graph;
+export default GraphFav;

@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import './SearchResult.css';
 
 const SearchResult = (props) => {
-
-    //const link = `https://cloud.iexapis.com/stable/tops?token=${process.env.REACT_APP_STOCK_TOKEN}&symbols=`
     const handlefilter = () => {
         props.onClick('clicked');
     }
@@ -32,6 +30,4 @@ const SearchResult = (props) => {
     )
 }
 
-
-//{data.filter((data) => data.author.toLowerCase().includes(data)).map((data) => (    <p> {data.title} </p>))}
 export default SearchResult;

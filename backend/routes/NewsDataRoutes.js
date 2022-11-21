@@ -7,9 +7,5 @@ const removeHomeNewsData = require("../controller/News/RemoveHomeNewsController"
 router.get("/", getHomeNewsData);
 router.post("/addhomenews", addHomeNewsData);
 router.post("/removehomenews", removeHomeNewsData);
-/* 
-router.post("/addstock", addStockData);
-router.post("/", StockDataController);
-router.remove("/", StockDataController); */
 
 module.exports = router;

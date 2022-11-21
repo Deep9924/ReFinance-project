@@ -11,13 +11,20 @@ const Home = () => {
 	const [homeNews, setHomeNews] = useState([]);
 	const [stockData, setStockData] = useState();
 	const [stockCandle, setStockCandle] = useState();
+	const [stockInfoData, setStockInfoData] = useState([]);
 	const symbol = "AAPL";
 
 	useEffect(() => {
 		axios
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=stock`)
+			.then(res => {
+				setStockInfoData(res.data);
+			})
+			.catch(err => console.log(err))
+		axios
 			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=data`)
 			.then((res) => {
-				setStockData(res.data.data.result)
+				setStockData(res.data.data.result.metric)
 				})
 			.catch((err) => console.log(err));
 		axios
@@ -53,10 +60,10 @@ const Home = () => {
 		<div className='main_test'>
 			<div className='mainweb'>
 				<div className='home_graph'>
-					<Graph symbol={symbol} stockData={stockData} stockCandle={stockCandle}/>
+					<Graph symbol={symbol} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData}/>
 				</div>
 				<div className='favourite'>
-					<Favourites />
+					<Favourites symbol={symbol}/>
 				</div>
 				<div className='news'>{news}</div>
 			</div>

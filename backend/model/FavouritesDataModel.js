@@ -1,7 +1,6 @@
 const db = require("./DBModel").collection("Refinance_User");
 
 const getFavNotAdded = async (user_email, user_favstock) => {
-	// .limit(10);
 	return (await db.countDocuments({ email: user_email, favourites: user_favstock })) === 0;
 };
 
@@ -17,7 +16,7 @@ const addFavStockDataToDB = async (user_email, user_favstock) => {
 			);
 	} catch (e) {
 		console.error(e);
-		return e; //false
+		return e;
 	}
 	return true;
 };
